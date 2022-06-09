@@ -90,12 +90,18 @@
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav align-items-center ml-auto ml-md-0">
-            <!<li class="nav-item dropdown">
+            <li class="nav-item dropdown">
               <div class="media align-items-center">
                 <div class="media-body ml-2 d-none d-lg-block">
                   <span class="mb-0 text-sm  font-weight-bold">Hello, {{ auth()->user()->username }}</span>
                 </div>
               </div>
+              <div class="dropdown-menu dropdown-menu-right show">
+                  <a href="#!" class="dropdown-item">
+                     <i class="ni ni-user-run"></i>
+                     <span>Logout</span>
+                  </a>
+               </div>
             </li>
           </ul>
         </div>
