@@ -53,8 +53,11 @@
               <div class="collapse show" id="navbar-dashboards">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">Validasi Registrasi</a>
-                    <a href="#" class="nav-link">Account Peserta</a>
+                    <a href="#" class="nav-link">Kategori</a>
+                    <a href="#" class="nav-link">Daftar Obat</a>
+                    <a href="#" class="nav-link">Daftar Customer</a>
+                    <a href="#" class="nav-link">Report Obat Terlaris</a>
+                    <a href="#" class="nav-link">Report Customer Terbanyak</a>
                   </li>
                 </ul>
               </div>
