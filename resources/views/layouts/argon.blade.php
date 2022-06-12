@@ -83,7 +83,7 @@
             <li class="nav-item dropdown">
               <div class="media align-items-center">
                 <div class="media-body ml-2 d-none d-lg-block">
-                  <span class="mb-0 text-sm  font-weight-bold">Hello, {{ auth()->user()->username }}</span>
+                  <span class="mb-0 text-sm  font-weight-bold">Hello, Admin</span>
                 </div>
               </div>
               <div class="dropdown-menu dropdown-menu-right show">
@@ -97,7 +97,6 @@
         </div>
       </div>
     </nav>
-    <!-- Header -->
     <!-- Header -->
     <section class="header pb-6">
       <div class="container-fluid">
