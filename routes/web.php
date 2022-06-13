@@ -26,3 +26,5 @@ Route::get('/dashboard', function () { return view('admin.info'); });
 Route::get('/reportcustomer','ObatController@showData');
 
 Route::get('/kategori','KategoriObatController@index');
+
+Route::get('/testlogin',function () { return view('auth.login'); });
