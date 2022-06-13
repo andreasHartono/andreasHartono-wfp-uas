@@ -13,8 +13,8 @@ class AddKategoriobatidColumn extends Migration
      */
     public function up()
     {
-        Schema::table('obat', function (Blueprint $table) {
-            $table->foreignId('kategoriobat_id')->constrained('kategoriobat');
+        Schema::table('obats', function (Blueprint $table) {
+            $table->foreignId('kategoriobat_id')->constrained('kategori_obats');
         });
     }
 
@@ -25,6 +25,9 @@ class AddKategoriobatidColumn extends Migration
      */
     public function down()
     {
-        $table->dropForeign(['kategoriobat_id']);
+        Schema::table('notas', function (Blueprint $table) {
+            $table->dropForeign(['kategoriobat_id']);
+        });
+        
     }
 }

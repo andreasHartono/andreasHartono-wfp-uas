@@ -13,8 +13,8 @@ class AddUseridColumn extends Migration
      */
     public function up()
     {
-        Schema::table('nota', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained('user');
+        Schema::table('notas', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 
@@ -25,6 +25,8 @@ class AddUseridColumn extends Migration
      */
     public function down()
     {
-        $table->dropForeign(['user_id']);
+        Schema::table('notas', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
     }
 }

@@ -13,10 +13,11 @@ class CreateObatTable extends Migration
      */
     public function up()
     {
-        Schema::create('obat', function (Blueprint $table) {
+        Schema::create('obats', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->string('deskripsi');
+            $table->string('gambar');
             $table->bigInteger('harga');
             $table->timestamps();
 

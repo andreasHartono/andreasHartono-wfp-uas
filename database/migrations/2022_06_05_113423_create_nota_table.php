@@ -13,7 +13,7 @@ class CreateNotaTable extends Migration
      */
     public function up()
     {
-        Schema::create('nota', function (Blueprint $table) {
+        Schema::create('notas', function (Blueprint $table) {
             $table->id();
             $table->biginteger('total_harga');
             $table->timestamps();

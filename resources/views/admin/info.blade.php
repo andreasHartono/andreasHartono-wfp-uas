@@ -1,4 +1,4 @@
-@extends('layouts.admindashboard')
+@extends('layouts.argon')
 @section('title')
     Welcome
 @endsection

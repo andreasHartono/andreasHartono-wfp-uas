@@ -13,7 +13,7 @@ class CreateKategoriobatTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategoriobat', function (Blueprint $table) {
+        Schema::create('kategori_obats', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
             $table->timestamps();

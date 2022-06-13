@@ -13,9 +13,9 @@ class AddNotadetailidColumn extends Migration
      */
     public function up()
     {
-        Schema::table('notadetail', function (Blueprint $table) {
-            $table->foreignId('nota_id')->constrained('nota');
-            $table->foreignId('obat_id')->constrained('obat');
+        Schema::table('nota_details', function (Blueprint $table) {
+            $table->foreignId('nota_id')->constrained('notas');
+            $table->foreignId('obat_id')->constrained('obats');
         });
     }
 
@@ -26,7 +26,9 @@ class AddNotadetailidColumn extends Migration
      */
     public function down()
     {
-        $table->dropForeign(['nota_id']);
-        $table->dropForeign(['obat_id']);
+        Schema::table('notas', function (Blueprint $table) {
+            $table->dropForeign(['nota_id']);
+            $table->dropForeign(['obat_id']);
+        });
     }
 }

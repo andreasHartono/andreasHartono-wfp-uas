@@ -13,7 +13,7 @@ class CreateNotadetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('notadetail', function (Blueprint $table) {
+        Schema::create('nota_details', function (Blueprint $table) {
             $table->id();
             $table->integer('kuantitas');
             $table->timestamps();
