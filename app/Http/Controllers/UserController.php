@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\KategoriObat;
 use Illuminate\Http\Request;
+use App\User;
 
-class KategoriObatController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,12 @@ class KategoriObatController extends Controller
      */
     public function index()
     {
-        $data = KategoriObat::all();
-        return view('admin.data.kategori', compact('data'));
+        //
+    }
+
+    public function data(){
+        $data = User::where('sebagai','=','user')->get();
+        return view('admin.data.customer', compact('data'));
     }
 
     /**
@@ -36,19 +40,16 @@ class KategoriObatController extends Controller
      */
     public function store(Request $request)
     {
-        $kategori = new KategoriObat();
-        $kategori['nama'] = $request['nama'];
-        $kategori->save();
-        return redirect()->route("kategori.index")->with('status', 'Kategori Obat Berhasil Tersimpan');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\KategoriObat  $kategoriObat
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(KategoriObat $kategoriObat)
+    public function show($id)
     {
         //
     }
@@ -56,24 +57,22 @@ class KategoriObatController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\KategoriObat  $kategoriObat
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, KategoriObat $kategoriObat)
+    public function edit($id)
     {
-        $kategoriObat['nama'] = $request['nama'];
-        $kategoriObat->save();
-        return redirect()->route("kategori.index")->with('status', 'Kategori Obat Berhasil Terubah');
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\KategoriObat  $kategoriObat
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KategoriObat $kategoriObat)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -81,10 +80,10 @@ class KategoriObatController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\KategoriObat  $kategoriObat
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KategoriObat $kategoriObat)
+    public function destroy($id)
     {
         //
     }

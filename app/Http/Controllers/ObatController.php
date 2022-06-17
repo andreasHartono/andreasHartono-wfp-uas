@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\KategoriObat;
 use App\Nota;
 use App\NotaDetail;
 use App\Obat;
@@ -19,6 +20,12 @@ class ObatController extends Controller
    public function index()
    {
       //
+   }
+
+   public function dashboardAdmin(){
+      $data = Obat::all();
+      $kategori = KategoriObat::all();
+      return view('admin.data.obat', compact('data','kategori'));
    }
 
    /**
@@ -39,7 +46,20 @@ class ObatController extends Controller
     */
    public function store(Request $request)
    {
-      //
+      $data = new Obat();
+      $data->nama = $request->get("nama");
+      $data->deskripsi = $request->get("description");
+      $data->harga = $request->get("price");
+      $data->kategoriobat_id = $request->get("kategori_id");
+
+      $file = $request->file('image');
+      $imgFolder='images/obat';
+      $imgFile=time()."_".$file->getClientOriginalName();
+      $file->move($imgFolder, $imgFile);
+      $data->gambar=$imgFile;
+
+      $data->save();
+      return redirect()->route("obat.index")->with('status', 'data obat baru berhasil tersimpan');
    }
 
    /**

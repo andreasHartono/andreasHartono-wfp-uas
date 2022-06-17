@@ -14,7 +14,8 @@ class NotaController extends Controller
      */
     public function index()
     {
-        //
+        $data = Nota::all();
+        return view('admin.report.reportactivity', compact('data'));
     }
 
     /**

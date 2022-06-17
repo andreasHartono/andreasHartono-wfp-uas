@@ -59,6 +59,7 @@
       <div class="mb-4">
          <h3>LOGIN APOTEK U</h3>
          <p class="mb-4">Login Dulu Yuk</p>
+         <p>Tidak Punya Akun? <a href="{{ url('/register') }}">Register</a></p>
       </div>
       <form action="#" method="post">
          <div class="form-group mb-3">

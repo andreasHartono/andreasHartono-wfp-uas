@@ -104,10 +104,17 @@
 					</div>
 					<div class="col-lg-2 col-md-3 col-12">
 						<div class="right-bar">
-							<!-- Search Form -->
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-							</div>
+							<!-- Login Form -->
+								@if (Auth::check())
+								<div class="sinlge-bar">
+									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i>{{ auth()->user()->username }}</a>
+								</div>
+								@else
+								<div class="sinlge-bar">
+									<a href="{{ url('/login') }}" class="single-icon">Login</a>
+								</div>
+								@endif
+
 							<div class="sinlge-bar shopping">
 								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
 								<!-- Shopping Item -->
@@ -158,7 +165,7 @@
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
 													<li class="active"><a href="#">Product</a></li>
-                                       <li><a href="#">Home</a></li>
+                                       				<li><a href="#">Home</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="#">Cart</a></li>
@@ -195,8 +202,7 @@
 					<div class="col-12">
 						<section class="product-info">
 							<div class="tab-content" id="myTabContent">
-                        @yield('content')
-								
+                        @yield('content')		
 							</div>
 						</section>
 					</div>

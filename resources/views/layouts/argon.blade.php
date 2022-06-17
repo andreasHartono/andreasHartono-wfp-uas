@@ -46,19 +46,22 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-               <a href="#" class="nav-link"><i class="ni ni-chart-pie-35 text-info"></i>Daftar Kategori</a>
+               <a href="{{ url('/kategori') }}" class="nav-link"><i class="ni ni-chart-pie-35 text-info"></i>Daftar Kategori</a>
             </li>
             <li class="nav-item">
-               <a href="#" class="nav-link"><i class="ni ni-ungroup text-orange"></i>Daftar Obat</a>
+               <a href="{{ url('/obat') }}" class="nav-link"><i class="ni ni-ungroup text-orange"></i>Daftar Obat</a>
             </li>
             <li class="nav-item">
-               <a href="#" class="nav-link"><i class="ni ni-ui-04 text-primary"></i>Daftar Customer</a>
+               <a href="{{ url('/pembeli') }}" class="nav-link"><i class="ni ni-ui-04 text-primary"></i>Daftar Customer</a>
             </li>
+            <li class="nav-item">
+              <a href="{{ url('/reportNote') }}" class="nav-link"><i class="ni ni-single-copy-04 text-success"></i>Daftar Pembelian</a>
+           </li>
             <li class="nav-item">
                <a href="#" class="nav-link"><i class="ni ni-archive-2 text-danger"></i>Report Obat Terlaris</a>
             </li>
             <li class="nav-item">
-               <a href="/reportcustomer" class="nav-link"><i class="ni ni-single-copy-04 text-success"></i>Report Customer Terbanyak</a>
+               <a href="{{ url('/reportcustomer') }}" class="nav-link"><i class="ni ni-single-copy-04 text-success"></i>Report Customer Terbanyak</a>
             </li>
           </ul>
         </div>

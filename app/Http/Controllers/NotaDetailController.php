@@ -49,6 +49,11 @@ class NotaDetailController extends Controller
         //
     }
 
+    public function cari($id){
+        $data = NotaDetail::where("nota_id",'=',$id)->get();
+        return view('admin.report.reportactivitydetail', compact('data'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
