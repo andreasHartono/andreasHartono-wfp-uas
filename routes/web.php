@@ -43,5 +43,5 @@ Route::get('/pembeli','UserController@data');
 
 Route::get('/testlogin',function () { return view('auth.login'); });
 
-Route::group(['middleware' => 'is_admin'], function () {
-});
+// Route::group(['middleware' => 'is_admin'], function () {
+// });

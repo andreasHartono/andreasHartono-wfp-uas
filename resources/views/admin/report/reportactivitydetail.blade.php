@@ -39,12 +39,12 @@
                         </tr>
                      </thead>
                      <tbody class="list">
-                        @foreach ($data as $data)
+                        @foreach ($data as $d)
                            <tr>
-                              <td>{{ $data->id }}</td>
-                              <td>{{ $data->obat->nama }}</td>
-                              <td>{{ $data->kuantitas }}</td>
-                              <td>Rp.{{ $data->obat->harga }}</td>
+                              <td>{{ $d->id }}</td>
+                              <td>{{ $d->obat->nama }}</td>
+                              <td>{{ $d->kuantitas }}</td>
+                              <td>Rp.{{ $d->obat->harga }}</td>
                            </tr>
                         @endforeach
                      </tbody>
