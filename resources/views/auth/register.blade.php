@@ -86,7 +86,7 @@
          </div>
          <div class="card-footer text-center pt-0 px-lg-2 px-1">
             <p class="text-sm mt-3 mb-0">Already have an account? 
-               <a href="{{ url('/login') }}" class="text-dark font-weight-bolder">Sign in</a>
+               <a href="{{ url('/login') }}" class="text-primary text-gradient font-weight-bolder">Sign in</a>
             </p>
          </div>
       </div>
