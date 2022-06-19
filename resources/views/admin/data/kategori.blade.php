@@ -51,8 +51,8 @@
                            </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button> 
+                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-default">Simpan</button> 
                       </div>
                      </form>
                     </div>
@@ -62,7 +62,7 @@
                </div>
                <!-- Light table -->
                <div class="table-responsive">
-                  <table id="default-datatable" class="table dataTable align-items-center table-flush table-hover">
+                  <table id="default-datatable" class="table dataTable align-items-center table-flush table-hover table-bordered table-dark">
                      <thead>
                         <tr>
                            <th>No</th>
@@ -96,15 +96,15 @@
                                            </div>
                                        </div>
                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="submit" class="btn btn-primary">Simpan</button>
+                                          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                                          <button type="submit" class="btn btn-info">Simpan</button>
                                        </div>
                                     </form>
                                     </div>
                                     </div>
                                  </div>
 
-                                <a href="" class="btn btn-danger">Hapus Kategori</a>
+                                <a href="#" class="btn btn-danger">Hapus Kategori</a>
                             </td>
                            </tr>
                         @endforeach
@@ -114,4 +114,7 @@
             </div>
          </div>
       </div>
+@endsection
+@section('javascript')
+   
 @endsection
