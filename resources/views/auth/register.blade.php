@@ -22,6 +22,14 @@
                   @enderror
                </div>
                <div class="mb-3">
+                  <input type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" placeholder="Email" value="{{ old('email') }}" name="email" aria-label="email">
+                  @error('email')
+                     <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                     </span>
+                  @enderror
+               </div>
+               <div class="mb-3">
                   <input type="username" class="form-control form-control-lg @error('username') is-invalid @enderror" placeholder="Username" value="{{ old('username') }}" name="username" aria-label="Username">
                   @error('username')
                      <span class="invalid-feedback" role="alert">
@@ -46,20 +54,13 @@
                   @enderror
                </div>
                <div class="mb-3">
-                  <input type="password" class="form-control form-control-lg control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" autocomplete="new-password">
+                  <input type="password" class="form-control form-control-lg control @error('password_confirmation') is-invalid @enderror" placeholder="Confirm Password" name="password_confirmation" autocomplete="new-password">
                   @error('password_confirmation')
                      <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                      </span>
                   @enderror
-               </div>
-               <div class="mb-3">
-                  <input type="password" class="form-control form-control-lg control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" autocomplete="new-password">
-                  @error('password_confirmation')
-                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                     </span>
-                  @enderror
+                  <label class="col-md-4 col-form-label text-md-right">Sebagai</label>
                </div>
                <div class="form-check mb-3">
                   <input class="form-check-input @error('roles') is-invalid @enderror" type="radio" name="roles" id="owner" value="owner">
