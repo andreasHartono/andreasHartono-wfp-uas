@@ -31,7 +31,7 @@ Route::get('/repordetail/{id}','NotaDetailController@cari');
 //Obat
 Route::get('/obat','ObatController@dashboardAdmin')->name('obat.index');
 Route::post('/obat/add','ObatController@store');
-Route::post('/obat/delete/{obat}','ObatController@destroy');
+Route::delete('/obat/delete/{obat}','ObatController@destroy');
 
 //kategori
 Route::get('/kategori','KategoriObatController@index')->name('kategori.index');

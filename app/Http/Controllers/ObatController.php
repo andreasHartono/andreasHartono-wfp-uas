@@ -112,6 +112,12 @@ class ObatController extends Controller
     */
    public function destroy(Obat $obat)
    {
-      //
+      $result = NotaDetail::where("obat_id","=",$obat['id'])->first();
+      if($result === null){
+         Obat::find($obat['id'])->delete();
+         return redirect()->route("obat.index")->with('status', 'data obat berhasil terhapus');
+      }else{
+         return redirect()->route("obat.index")->with('fail', 'data obat gagal terhapus karena obat sudah dibeli');
+      }
    }
 }

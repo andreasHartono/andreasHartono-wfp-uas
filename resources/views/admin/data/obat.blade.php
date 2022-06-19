@@ -21,7 +21,11 @@
     <div class="alert alert-success">
         {{ session('status') }}
     </div>
-@endif
+   @elseif(session('fail'))
+   <div class="alert alert-danger">
+      {{ session('fail') }}
+  </div>
+    @endif
 @endsection
 @section('content')
       <div class="row">
@@ -156,8 +160,12 @@
                                    </div>
                                  </div>
                                </div>
-
-                                <a href="" class="btn btn-danger">Hapus Obat</a>
+                               <form action="{{ url('/obat/delete/'.$data->id) }}" method="POST">
+                                 @csrf
+                                 @method('DELETE')
+                                 <input type="hidden" value="{{ $data->id }}" name="id">
+                                 <button type="submit"  class="btn btn-danger" onclick="if(!confirm('Apakah anda yakin menghapus data {{ $data['nama'] }}')) return false">Hapus Obat</button>
+                              </form>
                             </td>
                            </tr>
                         @endforeach
