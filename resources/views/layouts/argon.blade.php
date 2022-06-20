@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-  <meta name="author" content="SI Maniac Development">
+  <meta name="description" content="Start your development with a Dashboard for Bootstrap 4 & 5">
+  <meta name="author" content="APOTEK U Developer">
   <title>APOTEKU | @yield('title') </title>
   <!-- Favicon -->
   {{-- <link href="{{ asset('../mainweb/img/logo/logo.ico') }}" rel="shorcut icon"> --}}
@@ -27,7 +27,7 @@
       <!-- Brand -->
       <div class="sidenav-header d-flex align-items-center">
         <a class="navbar-brand" href="{{ url('/') }}">
-          <img src="{{ asset('admin/assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="...">
+          <img src="{{ asset('images/apoteku.png') }}" class="navbar-brand-img" alt="...">
         </a>
         <div class="ml-auto">
           <!-- Sidenav toggler -->
