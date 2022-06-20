@@ -103,8 +103,13 @@
                                     </div>
                                     </div>
                                  </div>
-
-                                <a href="#" class="btn btn-danger">Hapus Kategori</a>
+                                 <form action="{{ url('/kategori/delete/'.$data->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="hidden" value="{{ $data->id }}" name="id">
+                                    <button type="submit"  class="btn btn-danger" onclick="if(!confirm('Apakah anda yakin menghapus data {{ $data->nama }}')) return false">Hapus Kategori</button>
+                                 </form>                                 
+                                {{-- <a href="#" class="btn btn-danger">Hapus Kategori</a> --}}
                             </td>
                            </tr>
                         @endforeach

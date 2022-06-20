@@ -125,5 +125,19 @@
     </div>
 @endsection
 @section('javascript')
-   
+   <script>
+      function getCustomerEditForm(id) {
+         $.ajax({
+            'type':'POST',
+            'url':'#',
+            'data':{
+               '_token': '<?php echo csrf_token() ?>',
+               'id':id
+            },
+            success: function(data) {
+               $("#exampleModal").html(data.msg)
+            }
+         });
+      }
+   </script>
 @endsection

@@ -178,5 +178,19 @@
    </div>
 @endsection
 @section('javascript')
-   
+   <script>
+      function getEditForm(id) {
+         $.ajax({ 
+            type:'POST',
+            url: '#',
+            data: {
+               'token':'<?php echo csrf_token() ?>',
+               'id':id
+            }, 
+            success: function(data) {
+               $("#exampleModal2").html(data.msg)
+            }
+         });
+      }
+   </script>
 @endsection
