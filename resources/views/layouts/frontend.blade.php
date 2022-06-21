@@ -10,7 +10,7 @@
 	<!-- Title Tag  -->
     <title>APOTEKU Pharmacy</title>
 	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="{{ asset('frontend/images/favicon.png') }}">
+	<link rel="icon" type="image/png" href="{{ asset('images/apoteku.png') }}">
 	<!-- Web Font -->
 	<link href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap" rel="stylesheet">
 	
@@ -68,83 +68,88 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="{{ url('/') }}"><img src="{{ asset('images/apoteku.png') }}" alt="logo"></a>
+							<a href="{{ url('/') }}"><img src="{{ asset('images/apoteku.png') }}" alt="logo" height="300" width="300"></a>
 						</div>
 						<!--/ End Logo -->
-						<!-- Search Form -->
-						<!--/ End Search Form -->
 						<div class="mobile-nav"></div>
 					</div>
 					<div class="col-lg-8 col-md-7 col-12">
-						<div class="search-bar-top">
+						{{-- <div class="search-bar-top">
 							<div class="search-bar">
 								<form action="{{ url('/home/search') }}" method="POST">
 									@csrf
 									<select name="kategori">
 										<option value="" selected="selected">All Category</option>
 										@foreach ($category as $item)
-										<option value="{{ $item['id'] }}">{{ $item['nama'] }}</option>
+										   <option value="{{ $item['id'] }}">{{ $item['nama'] }}</option>
 										@endforeach
 									</select>
 									<span>
-										<input name="search" placeholder="Search Products Here....." type="search">
+										<input name="search" placeholder="Ketikkan obat disini" type="search">
 										<button type="submit" class="btnn"><i class="ti-search"></i></button>
 									</span>
 								</form>
 							</div>
-						</div>
+						</div> --}}
 					</div>
 					<div class="col-lg-2 col-md-3 col-12">
 						<div class="right-bar">
 							<!-- Login Form -->
 								@if (Auth::check())
-								<div class="dropdown">
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-										@if (auth()->user()->sebagai === 'pegawai')
-										<a class="dropdown-item" href="#">Dashboard</a>
-										@endif
+                           <div class="dropdown">
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                 @if (auth()->user()->sebagai === 'pegawai')
+                                 <a class="dropdown-item" href="{{ url('/dashboard') }}">Dashboard</a>
+                                 @endif
 
-									  <form action={{ url('/logout') }} method="post">
-										@csrf
-										<button type="submit" class="dropdown-item">Logout</button>
-									  </form>
-									</div>
-								  </div>
-								<div class="sinlge-bar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ auth()->user()->username }}</a>
-								</div>
+                              <form action="{{ url('/logout') }}" method="post">
+                                 @csrf
+                                 <button type="submit" class="dropdown-item">Logout</button>
+                              </form>
+                              </div>
+                           </div>
+                           <div class="sinlge-bar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ auth()->user()->username }}</a>
+                           </div>
 								@else
-								<div class="sinlge-bar">
-									<a href="{{ url('/login') }}" class="single-icon">Login</a>
-								</div>
+                           <div class="sinlge-bar">
+                              <a href="{{ url('/login') }}" class="single-icon">Login</a>
+                           </div>
 								@endif
 
 							<div class="sinlge-bar shopping">
-								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+
+                        <?php $total = 0; $quantity = 0;?>
+                        @if (session('cart'))
+                           @foreach (session('cart') as $id => $details)
+                              <?php $quantity += $details['quantity']; ?>
+                           @endforeach
+                        @endif          
+								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ $quantity }}</span></a>
 								<!-- Shopping Item -->
 								<div class="shopping-item">
 									<div class="dropdown-cart-header">
-										<span>2 Items</span>
-										<a href="#">View Cart</a>
+										<span>{{ $quantity }} Items</span>
+										<a href="{{ url('cart') }}">View Cart</a>
 									</div>
 									<ul class="shopping-list">
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
-										</li>
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Necklace</a></h4>
-											<p class="quantity">1x - <span class="amount">$35.00</span></p>
-										</li>
+                              
+                              @if(session('cart'))
+                                 @foreach (session('cart') as $id => $details)
+                                    <?php $total += $details['price'] * $details['quantity']; ?>
+                                    <li>
+                                       <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+                                       <h4>{{ $details['name'] }}</h4>
+                                       <p class="quantity">{{ $details['quantity'] }} x - <span class="amount">Rp.{{ $details['price'] }}</span></p>
+                                    </li>
+                                 @endforeach
+                              @endif
+										
 									</ul>
 									<div class="bottom">
 										<div class="total">
 											<span>Total</span>
-											<span class="total-amount">$134.00</span>
+											<span class="total-amount">Rp. {{ $total }},00</span>
 										</div>
 										<a href="#" class="btn animate">Checkout</a>
 									</div>
@@ -169,7 +174,6 @@
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
 													<li class="active"><a href="#">Product</a></li>
-                                       				<li><a href="#">Home</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
 															<li><a href="#">Cart</a></li>
@@ -206,7 +210,7 @@
 					<div class="col-12">
 						<section class="product-info">
 							<div class="tab-content" id="myTabContent">
-                        	@yield('content')		
+                        @yield('content')		
 							</div>
 						</section>
 					</div>
@@ -249,10 +253,11 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="#"><img src="{{ asset('frontend/images/logo2.png') }}" alt="#"></a>
+								<a href="#"><img src="{{ asset('images/apoteku.png') }}" alt="Logo ApotekU"></a>
 							</div>
-							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+							<p class="text">ApotekU adalah bagian dari perusahaan farmasi swasta terbesar di Surabaya.  
+                        Menyediakan berbagai macam obat dari berbagai merek</p>
+							<p class="call">Ada Pertanyaan Hubungi : <span><a href="tel:0312981366">031-298-1366</a></span></p>
 						</div>
 						<!-- End Single Widget -->
 					</div>
@@ -263,7 +268,6 @@
 							<ul>
 								<li><a href="#">About Us</a></li>
 								<li><a href="#">Faq</a></li>
-								<li><a href="#">Terms & Conditions</a></li>
 								<li><a href="#">Contact Us</a></li>
 								<li><a href="#">Help</a></li>
 							</ul>
@@ -277,7 +281,6 @@
 							<ul>
 								<li><a href="#">Payment Methods</a></li>
 								<li><a href="#">Shipping</a></li>
-								<li><a href="#">Privacy Policy</a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
@@ -295,8 +298,6 @@
 							<!-- End Single Widget -->
 							<ul>
 								<li><a href="#"><i class="ti-facebook"></i></a></li>
-								<li><a href="#"><i class="ti-twitter"></i></a></li>
-								<li><a href="#"><i class="ti-flickr"></i></a></li>
 								<li><a href="#"><i class="ti-instagram"></i></a></li>
 							</ul>
 						</div>
