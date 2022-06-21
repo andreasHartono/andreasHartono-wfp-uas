@@ -14,34 +14,43 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.frontend');
-});
+Route::get('/', "HomeController@home");
+Route::post('/home/search', "HomeController@search");
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', function () { return view('admin.info'); });
+Route::get('/dashboard', function () {
+    return view('admin.info');
+});
 
-//Report
-Route::get('/reportcustomer','ObatController@showData');
-Route::get('/reportNote','NotaController@index');
-Route::get('/repordetail/{id}','NotaDetailController@cari');
+Route::get('/login/account', 'LoginController@Login');
+Route::get('/logout/account', 'LoginController@logout');
 
-//Obat
-Route::get('/obat','ObatController@dashboardAdmin')->name('obat.index');
-Route::post('/obat/add','ObatController@store');
-Route::delete('/obat/delete/{obat}','ObatController@destroy');
-
-//kategori
-Route::get('/kategori','KategoriObatController@index')->name('kategori.index');
-Route::post('/kategori/add','KategoriObatController@store');
-Route::post('/kategori/update/{kategoriObat}','KategoriObatController@edit');
-
-//Pembeli
-Route::get('/pembeli','UserController@data');
-
-Route::get('/testlogin',function () { return view('auth.login'); });
+Route::get('/testlogin', function () {
+    return view('auth.login');
+});
 
 // Route::group(['middleware' => 'is_admin'], function () {
 // });
+
+Route::group(['middleware' => 'admin'], function () {
+    //Report
+    Route::get('/reportcustomer', 'ObatController@showData');
+    Route::get('/reportNote', 'NotaController@index');
+    Route::get('/repordetail/{id}', 'NotaDetailController@cari');
+
+    //Obat
+    Route::get('/obat', 'ObatController@dashboardAdmin')->name('obat.index');
+    Route::post('/obat/add', 'ObatController@store');
+    Route::delete('/obat/delete/{obat}', 'ObatController@destroy');
+
+    //kategori
+    Route::get('/kategori', 'KategoriObatController@index')->name('kategori.index');
+    Route::post('/kategori/add', 'KategoriObatController@store');
+    Route::post('/kategori/update/{kategoriObat}', 'KategoriObatController@edit');
+
+    //Pembeli
+    Route::get('/pembeli', 'UserController@data');
+});

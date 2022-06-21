@@ -68,36 +68,28 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="{{ asset('images/apoteku.png') }}" alt="logo"></a>
+							<a href="{{ url('/') }}"><img src="{{ asset('images/apoteku.png') }}" alt="logo"></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
-						<div class="search-top">
-							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-							<!-- Search Form -->
-							<div class="search-top">
-								<form class="search-form">
-									<input type="text" placeholder="Search here..." name="search">
-									<button value="search" type="submit"><i class="ti-search"></i></button>
-								</form>
-							</div>
-							<!--/ End Search Form -->
-						</div>
 						<!--/ End Search Form -->
 						<div class="mobile-nav"></div>
 					</div>
 					<div class="col-lg-8 col-md-7 col-12">
 						<div class="search-bar-top">
 							<div class="search-bar">
-								<select>
-									<option selected="selected">All Category</option>
-									<option>watch</option>
-									<option>mobile</option>
-									<option>kid’s item</option>
-								</select>
-								<form>
-									<input name="search" placeholder="Search Products Here....." type="search">
-									<button class="btnn"><i class="ti-search"></i></button>
+								<form action="{{ url('/home/search') }}" method="POST">
+									@csrf
+									<select name="kategori">
+										<option value="" selected="selected">All Category</option>
+										@foreach ($category as $item)
+										<option value="{{ $item['id'] }}">{{ $item['nama'] }}</option>
+										@endforeach
+									</select>
+									<span>
+										<input name="search" placeholder="Search Products Here....." type="search">
+										<button type="submit" class="btnn"><i class="ti-search"></i></button>
+									</span>
 								</form>
 							</div>
 						</div>
@@ -106,8 +98,20 @@
 						<div class="right-bar">
 							<!-- Login Form -->
 								@if (Auth::check())
-								<div class="sinlge-bar">
-									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i>{{ auth()->user()->username }}</a>
+								<div class="dropdown">
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										@if (auth()->user()->sebagai === 'pegawai')
+										<a class="dropdown-item" href="#">Dashboard</a>
+										@endif
+
+									  <form action={{ url('/logout') }} method="post">
+										@csrf
+										<button type="submit" class="dropdown-item">Logout</button>
+									  </form>
+									</div>
+								  </div>
+								<div class="sinlge-bar dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ auth()->user()->username }}</a>
 								</div>
 								@else
 								<div class="sinlge-bar">
@@ -202,7 +206,7 @@
 					<div class="col-12">
 						<section class="product-info">
 							<div class="tab-content" id="myTabContent">
-                        @yield('content')		
+                        	@yield('content')		
 							</div>
 						</section>
 					</div>

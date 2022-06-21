@@ -10,7 +10,7 @@
          <p class="mb-0">Enter your username and password to sign in</p>
       </div>
       <div class="card-body">
-         <form role="form" action="{{ route('login') }}" method="POST>
+         <form role="form" action="{{ url('/login/account') }}" method="POST>
             @csrf
             <div class="mb-3">
                <input type="username" class="form-control form-control-lg @error('username') is-invalid @enderror" placeholder="Username" value="{{ old('username') }}" name="username" aria-label="Username">
