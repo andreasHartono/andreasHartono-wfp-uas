@@ -173,10 +173,10 @@
 									<div class="navbar-collapse">	
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="#">Product</a></li>
+													<li class="active"><a href="{{ url('/') }}">Obat</a></li>
 													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
 														<ul class="dropdown">
-															<li><a href="#">Cart</a></li>
+															<li><a href="{{ url('cart') }}">Cart</a></li>
 															<li><a href="#">Checkout</a></li>
 														</ul>
 													</li>
