@@ -98,6 +98,11 @@ class ObatController extends Controller
       //dd($dataPembeli);
    }
 
+   public function showObat(){
+      $dataObat = NotaDetail::select(DB::raw("obats.nama as nama, SUM(kuantitas) AS total"))->join("obats","nota_details.obat_id","=","obats.id")->groupBy("obat_id")->orderBy("total","DESC")->take(5)->get();
+      return view('admin.report.reportobat', compact('dataObat'));
+   }
+
    /**
     * Update the specified resource in storage.
     *

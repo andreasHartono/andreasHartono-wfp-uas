@@ -37,6 +37,7 @@ Route::get('/logout/account', 'LoginController@logout');
 Auth::routes();
 Route::group(['middleware' => 'admin'], function () {
    //Report
+   Route::get('/report/obat','ObatController@showObat');
    Route::get('/reportcustomer', 'ObatController@showData');
    Route::get('/reportNote', 'NotaController@index');
    Route::get('/repordetail/{id}', 'NotaDetailController@cari');
