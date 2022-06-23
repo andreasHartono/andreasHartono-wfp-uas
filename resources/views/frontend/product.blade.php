@@ -1,4 +1,7 @@
 @extends('layouts.frontend')
+@section('section-title')
+   List Obat
+@endsection
 @section('content')
    <!-- Start Single Tab -->
 <div class="tab-pane fade show active" id="man" role="tabpanel">

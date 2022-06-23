@@ -68,7 +68,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="{{ url('/') }}"><img src="{{ asset('images/apoteku.png') }}" alt="logo" height="300" width="300"></a>
+							<a href="{{ url('/') }}"><img src="{{ asset('images/apoteku.png') }}" alt="logo" height="130" width="130"></a>
 						</div>
 						<!--/ End Logo -->
 						<div class="mobile-nav"></div>
@@ -173,14 +173,16 @@
 									<div class="navbar-collapse">	
 										<div class="nav-inner">	
 											<ul class="nav main-menu menu navbar-nav">
-													<li class="active"><a href="{{ url('/') }}">Obat</a></li>
-													<li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
-														<ul class="dropdown">
-															<li><a href="{{ url('cart') }}">Cart</a></li>
-															<li><a href="#">Checkout</a></li>
-														</ul>
-													</li>
-													<li><a href="#">Contact Us</a></li>
+													<li class="active"><a href="{{ url('/') }}">Daftar Obat</a></li>
+                                       @if (Auth::check())
+                                          <li><a href="#">Transaksi</a>
+                                             <ul class="dropdown">
+                                                <li><a href="{{ url('cart') }}">Cart</a></li>
+                                                <li><a href="#">Riwayat Transaksi</a></li>
+                                             </ul>
+                                          </li>
+                                       @endif
+													
 												</ul>
 										</div>
 									</div>
@@ -202,7 +204,7 @@
 				<div class="row">
 					<div class="col-12">
 						<div class="section-title">
-							<h2>List Obat</h2>
+							<h2>@yield('section-title')</h2>
 						</div>
 					</div>
 				</div>
@@ -253,7 +255,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="#"><img src="{{ asset('images/apoteku.png') }}" alt="Logo ApotekU"></a>
+								<a href="#"><img src="{{ asset('images/apoteku.png') }}" alt="Logo ApotekU" height="250" width="250"></a>
 							</div>
 							<p class="text">ApotekU adalah bagian dari perusahaan farmasi swasta terbesar di Surabaya.  
                         Menyediakan berbagai macam obat dari berbagai merek</p>

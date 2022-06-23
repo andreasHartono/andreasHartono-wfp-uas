@@ -1,4 +1,7 @@
 @extends('layouts.frontend')
+@section('section-title')
+   List Cart
+@endsection
 @section('content')
    <!-- Breadcrumbs -->
 	<div class="breadcrumbs">
@@ -9,6 +12,7 @@
 						<ul class="bread-list">
 							<li><a href="{{ url('/') }}">Home<i class="ti-arrow-right"></i></a></li>
 							<li class="active"><a href="{{ url('/cart') }}">Cart</a></li>
+							<li><a href="{{ url('/cart') }}">Cart</a></li>
 						</ul>
 					</div>
 				</div>
@@ -41,12 +45,10 @@
                            <tr>
                               <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
                               <td class="product-des" data-title="Description">
-                                 <p class="product-name"><a href="#">{{ $details['name'] }}</a></p>
+                                 <p class="product-name">{{ $details['name'] }}</p>
                               </td>
                               <td class="price" data-title="Price"><span>Rp. {{ $details['price'] }},00</span></td>
-                              <td class="qty" data-title="Qty">
-                                 <input type="number" class="form-control text-center" value="{{ $details['quantity'] }}">
-                              </td>
+                              <td class="qty" data-title="Qty">{{ $details['quantity'] }}</td>
                               <td class="total-amount" data-title="Total"><span>Rp. Rp. {{ $details['price'] * $details['quantity'] }},00</span></td>
                            </tr>
                         @endforeach
