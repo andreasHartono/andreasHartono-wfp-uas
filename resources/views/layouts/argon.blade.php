@@ -27,7 +27,7 @@
       <!-- Brand -->
       <div class="sidenav-header d-flex align-items-center">
         <a class="navbar-brand" href="{{ url('/') }}">
-          <img src="{{ asset('images/apoteku.png') }}" class="navbar-brand-img" alt="...">
+          <img src="{{ asset('admin/assets/img/brand/blue.png') }}" class="navbar-brand-img" alt="..." height="400" width="400">
         </a>
         <div class="ml-auto">
           <!-- Sidenav toggler -->
@@ -45,6 +45,10 @@
         <div class="collapse navbar-collapse" id="sidenav-collapse-main">
           <!-- Nav items -->
           <ul class="navbar-nav">
+            <h6 class="navbar-heading p-0 text-muted" style="margin-top:0%; margin-bottom:2%; margin-left:10%; margin-right:10%;">
+            <hr class="my-3">
+              <span class="docs-normal">Master Dashboard</span>
+            </h6>
             <li class="nav-item">
                <a href="{{ url('/kategori') }}" class="nav-link"><i class="ni ni-chart-pie-35 text-info"></i>Daftar Kategori</a>
             </li>
@@ -105,10 +109,13 @@
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-user-run"></i>
-                  <span>Logout</span>
-                </a>
+               <form action="{{ url('/logout') }}" method="post">
+                  @csrf
+                  <button class="dropdown-item">
+                     <i class="ni ni-user-run"></i>
+                     <span>Logout</span>
+                  </button>
+               </form>
               </div>
             </li>
           </ul>
