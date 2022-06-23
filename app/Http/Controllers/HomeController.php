@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        return view('layouts.app');
     }
 
     /**
@@ -31,6 +31,7 @@ class HomeController extends Controller
     }
 
     public function home(){
+    
         $category = KategoriObat::all();
         $obat = Obat::all();
         return view('frontend.product', compact('category','obat'));
