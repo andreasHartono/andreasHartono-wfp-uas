@@ -12,8 +12,8 @@
             <div class="single-product">
                <div class="product-img">
                   <a href="#!">
-                     <img class="default-img" src="{{ asset('/images/obat/'.$item->gambar) }}" alt="#">
-                     <img class="hover-img" src="{{ asset('/images/obat/'.$item->gambar) }}" alt="#">
+                     <img width="200px" height="400px" class="default-img" src="{{ asset('/images/obat/'.$item->gambar) }}" alt="#">
+                     <img width="200px" height="400px" class="hover-img" src="{{ asset('/images/obat/'.$item->gambar) }}" alt="#">
                   </a>
                   <div class="button-head">
                      <div class="product-action">

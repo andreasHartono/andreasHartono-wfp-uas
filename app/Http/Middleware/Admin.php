@@ -16,7 +16,7 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::check() || Auth::user()->sebagai === 'pegawai' ){
+        if(!Auth::check() || Auth::user()->sebagai === 'user' ){
             abort(403);
         }
         return $next($request);
