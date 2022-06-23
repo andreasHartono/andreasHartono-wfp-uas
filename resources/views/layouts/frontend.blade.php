@@ -138,7 +138,7 @@
                                  @foreach (session('cart') as $id => $details)
                                     <?php $total += $details['price'] * $details['quantity']; ?>
                                     <li>
-                                       <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
+                                       <a class="cart-img" href="#"><img src="{{ asset('/images/obat/'.$details['photo']) }}" alt="#"></a>
                                        <h4>{{ $details['name'] }}</h4>
                                        <p class="quantity">{{ $details['quantity'] }} x - <span class="amount">Rp.{{ $details['price'] }}</span></p>
                                     </li>
@@ -151,7 +151,7 @@
 											<span>Total</span>
 											<span class="total-amount">Rp. {{ $total }},00</span>
 										</div>
-										<a href="#" class="btn animate">Checkout</a>
+										<a href="{{ url('cart') }}" class="btn animate">Checkout</a>
 									</div>
 								</div>
 								<!--/ End Shopping Item -->

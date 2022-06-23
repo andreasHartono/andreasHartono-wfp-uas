@@ -43,7 +43,7 @@
                         @foreach (session('cart') as $id => $details)
                            <?php  $total += $details['price'] * $details['quantity']; ?>
                            <tr>
-                              <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                              <td class="image" data-title="No"><img src="{{ asset('/images/obat/'.$details['photo']) }}" alt="#"></td>
                               <td class="product-des" data-title="Description">
                                  <p class="product-name">{{ $details['name'] }}</p>
                               </td>
