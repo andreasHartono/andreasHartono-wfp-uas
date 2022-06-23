@@ -14,43 +14,44 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "HomeController@home");
-Route::post('/home/search', "HomeController@search");
+Route::get('/', 'HomeController@home');
+Route::post('/home/search', 'HomeController@search');
+Route::get('cart', 'HomeController@cart');
+Route::get('add-to-cart/{id}', 'HomeController@addToCart');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/dashboard', function () {
-    return view('admin.info');
+   return view('admin.info');
 });
 
 Route::get('/login/account', 'LoginController@Login');
 Route::get('/logout/account', 'LoginController@logout');
 
-Route::get('/testlogin', function () {
-    return view('auth.login');
-});
+// Route::get('/testlogin', function () {
+//     return view('auth.login');
+// });
 
 // Route::group(['middleware' => 'is_admin'], function () {
 // });
-
+Auth::routes();
 Route::group(['middleware' => 'admin'], function () {
-    //Report
-    Route::get('/reportcustomer', 'ObatController@showData');
-    Route::get('/reportNote', 'NotaController@index');
-    Route::get('/repordetail/{id}', 'NotaDetailController@cari');
+   //Report
+   Route::get('/reportcustomer', 'ObatController@showData');
+   Route::get('/reportNote', 'NotaController@index');
+   Route::get('/repordetail/{id}', 'NotaDetailController@cari');
 
-    //Obat
-    Route::get('/obat', 'ObatController@dashboardAdmin')->name('obat.index');
-    Route::post('/obat/add', 'ObatController@store');
-    Route::delete('/obat/delete/{obat}', 'ObatController@destroy');
+   //Obat
+   Route::get('/obat', 'ObatController@dashboardAdmin')->name('obat.index');
+   Route::post('/obat/add', 'ObatController@store');
+   Route::delete('/obat/delete/{obat}', 'ObatController@destroy');
 
-    //kategori
-    Route::get('/kategori', 'KategoriObatController@index')->name('kategori.index');
-    Route::post('/kategori/add', 'KategoriObatController@store');
-    Route::post('/kategori/update/{kategoriObat}', 'KategoriObatController@edit');
+   //kategori
+   Route::get('/kategori', 'KategoriObatController@index')->name('kategori.index');
+   Route::post('/kategori/add', 'KategoriObatController@store');
+   Route::post('/kategori/update/{kategoriObat}', 'KategoriObatController@edit');
+   Route::delete('/kategori/delete/{kategoriObat}', 'KategoriObatController@destroy');
 
-    //Pembeli
-    Route::get('/pembeli', 'UserController@data');
+   //Pembeli
+   Route::get('/pembeli', 'UserController@data');
 });

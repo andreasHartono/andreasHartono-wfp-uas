@@ -22,10 +22,11 @@ class ObatController extends Controller
       //
    }
 
-   public function dashboardAdmin(){
+   public function dashboardAdmin()
+   {
       $data = Obat::all();
       $kategori = KategoriObat::all();
-      return view('admin.data.obat', compact('data','kategori'));
+      return view('admin.data.obat', compact('data', 'kategori'));
    }
 
    /**
@@ -52,11 +53,16 @@ class ObatController extends Controller
       $data->harga = $request->get("price");
       $data->kategoriobat_id = $request->get("kategori_id");
 
-      $file = $request->file('image');
-      $imgFolder='images/obat';
-      $imgFile=time()."_".$file->getClientOriginalName();
-      $file->move($imgFolder, $imgFile);
-      $data->gambar=$imgFile;
+      if ($request->file('image')) {
+         $file = $request->file('image');
+         $imgFolder = 'images/obat';
+         $imgFile = time() . "_" . $file->getClientOriginalName();
+         $file->move($imgFolder, $imgFile);
+      } else {
+         $imgFile = 'null';
+      }
+
+      $data->gambar = $imgFile;
 
       $data->save();
       return redirect()->route("obat.index")->with('status', 'data obat baru berhasil tersimpan');
@@ -112,11 +118,11 @@ class ObatController extends Controller
     */
    public function destroy(Obat $obat)
    {
-      $result = NotaDetail::where("obat_id","=",$obat['id'])->first();
-      if($result === null){
+      $result = NotaDetail::where("obat_id", "=", $obat['id'])->first();
+      if ($result === null) {
          Obat::find($obat['id'])->delete();
          return redirect()->route("obat.index")->with('status', 'data obat berhasil terhapus');
-      }else{
+      } else {
          return redirect()->route("obat.index")->with('fail', 'data obat gagal terhapus karena obat sudah dibeli');
       }
    }
