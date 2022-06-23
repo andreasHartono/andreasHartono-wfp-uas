@@ -109,10 +109,13 @@
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-right">
-                <a href="#!" class="dropdown-item">
-                  <i class="ni ni-user-run"></i>
-                  <span>Logout</span>
-                </a>
+               <form action="{{ url('/logout') }}" method="post">
+                  @csrf
+                  <button class="dropdown-item">
+                     <i class="ni ni-user-run"></i>
+                     <span>Logout</span>
+                  </button>
+               </form>
               </div>
             </li>
           </ul>
