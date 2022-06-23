@@ -20,7 +20,6 @@ class CreateObatTable extends Migration
             $table->string('gambar');
             $table->bigInteger('harga');
             $table->timestamps();
-
         });
     }
 

@@ -12,7 +12,7 @@
             <div class="single-product">
                <div class="product-img">
                   <a href="#!">
-                     <img class="default-img" src="https://via.placeholder.com/550x750" alt="#">
+                     <img class="default-img" src="{{ asset('/images/obat/'.$item->gambar) }}" alt="#">
                      <img class="hover-img" src="{{ asset('/images/obat/'.$item->gambar) }}" alt="#">
                   </a>
                   <div class="button-head">

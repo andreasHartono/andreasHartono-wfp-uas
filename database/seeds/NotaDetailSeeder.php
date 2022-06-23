@@ -39,7 +39,7 @@ class NotaDetailSeeder extends Seeder
         DB::table('nota_details')->insert(
             ['kuantitas' => 5,
              'nota_id' => 3,
-             'obat_id' => 4
+             'obat_id' => 1
         ]);
 
         DB::table('nota_details')->insert(
