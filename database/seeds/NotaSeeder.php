@@ -28,7 +28,32 @@ class NotaSeeder extends Seeder
         ]);
 
         DB::table('notas')->insert(
-            ['total_harga' => 10000,
+            ['total_harga' => 20000,
+             'user_id' => 1
+        ]);
+
+        DB::table('notas')->insert(
+            ['total_harga' => 22000,
+             'user_id' => 1
+        ]);
+
+        DB::table('notas')->insert(
+            ['total_harga' => 14000,
+             'user_id' => 1
+        ]);
+
+        DB::table('notas')->insert(
+            ['total_harga' => 17000,
+             'user_id' => 1
+        ]);
+
+        DB::table('notas')->insert(
+            ['total_harga' => 28000,
+             'user_id' => 1
+        ]);
+
+        DB::table('notas')->insert(
+            ['total_harga' => 30000,
              'user_id' => 1
         ]);
     }

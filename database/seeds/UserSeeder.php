@@ -52,5 +52,35 @@ class UserSeeder extends Seeder
             'sebagai' => 'pegawai',
          ]
       );
+
+      DB::table('users')->insert(
+         [
+            'nama' => 'dara',
+            'username' => 'dara123',
+            'password' => Hash::make('dara123'),
+            'alamat' => 'Jalan Kebayu',
+            'sebagai' => 'pegawai',
+         ]
+      );
+
+      DB::table('users')->insert(
+         [
+            'nama' => 'Dadar',
+            'username' => 'dadar123',
+            'password' => Hash::make('dadar123'),
+            'alamat' => 'Jalan Besar',
+            'sebagai' => 'user',
+         ]
+      );
+
+      DB::table('users')->insert(
+         [
+            'nama' => 'Bibit',
+            'username' => 'bibit123',
+            'password' => Hash::make('bibit123'),
+            'alamat' => 'Jalan Merak',
+            'sebagai' => 'user',
+         ]
+      );
    }
 }
