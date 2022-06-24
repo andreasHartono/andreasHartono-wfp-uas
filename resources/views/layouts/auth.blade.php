@@ -19,7 +19,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('auth/assets/img/apple-icon.png') }}">
-  <link rel="icon" type="image/png" href="{{ asset('auth/assets/img/favicon.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('images/apoteku.png') }}">
   <title>
     APOTEK U | @yield('title')
   </title>
@@ -73,6 +73,8 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('auth/assets/js/argon-dashboard.min.js?v=2.0.3')}}"></script>
+
+  @yield('javascript')
 </body>
 
 </html>
