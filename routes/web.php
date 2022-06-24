@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@home');
-Route::post('/home/search', 'HomeController@search');
 
 Route::get('cart', 'HomeController@cart');
 Route::get('add-to-cart/{id}', 'HomeController@addToCart');
