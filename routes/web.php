@@ -48,6 +48,7 @@ Route::group(['middleware' => 'admin'], function () {
 
    //Pembeli
    Route::get('/pembeli', 'UserController@data');
+   Route::post('/pembeli/edit', 'UserController@edit');
 
    //Dashboard
    Route::get('/dashboard', function () {
