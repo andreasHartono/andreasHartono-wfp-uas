@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Nota;
+use App\NotaDetail;
 use Illuminate\Http\Request;
 
 class NotaController extends Controller
@@ -16,6 +17,30 @@ class NotaController extends Controller
     {
         $data = Nota::all();
         return view('admin.report.reportactivity', compact('data'));
+    }
+
+    public function checkout(Request $request){
+        $cart = Session()->get('cart');
+        $total = $request['total'];
+
+        $nota = new Nota();
+        $nota->total_harga = $total;
+        $nota->user_id = auth()->user()->id;
+        $nota->save();
+        
+        $notaId = $nota->id;
+        foreach ($cart as $c) { 
+            $notaDetail = new NotaDetail();
+            $notaDetail['kuantitas'] = $c['quantity'];
+            $notaDetail['nota_id'] = $notaId;
+            $notaDetail['obat_id'] = $c['id'];
+
+            $notaDetail->save();
+        }
+
+        session()->forget('cart');
+        $request->session()->forget('cart'); 
+        return redirect('/');
     }
 
     /**

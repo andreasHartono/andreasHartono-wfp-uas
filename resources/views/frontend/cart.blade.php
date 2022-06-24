@@ -74,7 +74,11 @@
 										<li class="last">You Pay<span>Rp. {{ $total }},00</span></li>
 									</ul>
 									<div class="button5">
-										<a href="#" class="btn">Checkout</a>
+										<form action="{{ url('/checkout') }}" method="POST">
+											@csrf
+											<input type="hidden" name="total" value="{{ $total }}">
+											<input style="background-color: black" class="btn" type="submit" value="Checkout">
+										</form>
 										<a href="{{ url('/') }}" class="btn">Continue shopping</a>
 									</div>
 								</div>

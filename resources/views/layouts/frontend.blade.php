@@ -124,7 +124,9 @@
                            @foreach (session('cart') as $id => $details)
                               <?php $quantity += $details['quantity']; ?>
                            @endforeach
-                        @endif          
+                        @endif   
+						
+								@if (Auth::check())      
 								<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{ $quantity }}</span></a>
 								<!-- Shopping Item -->
 								<div class="shopping-item">
@@ -133,7 +135,7 @@
 										<a href="{{ url('cart') }}">View Cart</a>
 									</div>
 									<ul class="shopping-list">
-                              
+								@endif
                               @if(session('cart'))
                                  @foreach (session('cart') as $id => $details)
                                     <?php $total += $details['price'] * $details['quantity']; ?>
@@ -143,9 +145,10 @@
                                        <p class="quantity">{{ $details['quantity'] }} x - <span class="amount">Rp.{{ $details['price'] }}</span></p>
                                     </li>
                                  @endforeach
-                              @endif
-										
+                              @endif	
+							  
 									</ul>
+									@if (Auth::check())  
 									<div class="bottom">
 										<div class="total">
 											<span>Total</span>
@@ -154,6 +157,7 @@
 										<a href="{{ url('cart') }}" class="btn animate">Checkout</a>
 									</div>
 								</div>
+								@endif
 								<!--/ End Shopping Item -->
 							</div>
 						</div>
@@ -178,7 +182,7 @@
                                           <li><a href="#">Transaksi</a>
                                              <ul class="dropdown">
                                                 <li><a href="{{ url('cart') }}">Cart</a></li>
-                                                <li><a href="#">Riwayat Transaksi</a></li>
+                                                <li><a href="{{ url('/history') }}">Riwayat Transaksi</a></li>
                                              </ul>
                                           </li>
                                        @endif

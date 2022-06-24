@@ -16,14 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@home');
 Route::post('/home/search', 'HomeController@search');
-Route::get('cart', 'HomeController@cart');
-Route::get('add-to-cart/{id}', 'HomeController@addToCart');
 
 // Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/dashboard', function () {
-   return view('admin.info');
-});
 
 Route::get('/login/account', 'LoginController@Login');
 Route::get('/logout/account', 'LoginController@logout');
@@ -34,10 +28,18 @@ Route::get('/logout/account', 'LoginController@logout');
 
 // Route::group(['middleware' => 'is_admin'], function () {
 // });
+Route::get('cart', 'HomeController@cart');
+Route::get('add-to-cart/{id}', 'HomeController@addToCart');
+
+Route::post('/checkout', 'NotaController@checkout');
+
+Route::get('/history', "HomeController@history");
+Route::get('/history/{id}', "HomeController@historyDetail");
+
 Auth::routes();
 Route::group(['middleware' => 'admin'], function () {
    //Report
-   Route::get('/report/obat','ObatController@showObat');
+   Route::get('/report/obat', 'ObatController@showObat');
    Route::get('/reportcustomer', 'ObatController@showData');
    Route::get('/reportNote', 'NotaController@index');
    Route::get('/repordetail/{id}', 'NotaDetailController@cari');
@@ -55,4 +57,9 @@ Route::group(['middleware' => 'admin'], function () {
 
    //Pembeli
    Route::get('/pembeli', 'UserController@data');
+
+   //Dashboard
+   Route::get('/dashboard', function () {
+      return view('admin.info');
+   });
 });

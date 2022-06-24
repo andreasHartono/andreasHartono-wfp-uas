@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\KategoriObat;
+use App\Nota;
+use App\NotaDetail;
 use App\Obat;
 use Illuminate\Http\Request;
 
@@ -28,6 +30,17 @@ class HomeController extends Controller
    public function index()
    {
       return view('home');
+   }
+
+   public function history()
+   {
+      $data = Nota::where('user_id','=',auth()->user()->id)->get();
+      return view('history.index',compact('data'));
+   }
+
+   public function historyDetail($id){
+      $data = NotaDetail::where("nota_id",'=',$id)->get();
+      return view('history.detail', compact('data'));
    }
 
    public function home()
@@ -56,6 +69,7 @@ class HomeController extends Controller
 
       if (!isset($cart[$id])) {
          $cart[$id] = [
+            "id" => $obat->id,
             "name" => $obat->nama,
             "quantity" => 1,
             "price" => $obat->harga,
