@@ -95,5 +95,11 @@ class NotaDetailSeeder extends Seeder
              'nota_id' => 9,
              'obat_id' => 5
         ]);
+
+        DB::table('nota_details')->insert(
+            ['kuantitas' => 2,
+             'nota_id' => 10,
+             'obat_id' => 2
+        ]);
     }
 }
