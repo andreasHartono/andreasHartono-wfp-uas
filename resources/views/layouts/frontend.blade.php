@@ -46,7 +46,6 @@
 	
 </head>
 <body class="js">
-	
 	<!-- Preloader -->
 	<div class="preloader">
 		<div class="preloader-inner">
@@ -68,7 +67,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="{{ url('/') }}"><img src="{{ asset('images/apoteku.png') }}" alt="logo" height="130" width="130"></a>
+							<a href="{{ url('/') }}"><img src="{{ asset('images/apoteku.png') }}" alt="logo" height="60" width="60"></a>
 						</div>
 						<!--/ End Logo -->
 						<div class="mobile-nav"></div>
@@ -294,11 +293,11 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer social">
-							<h4>Get In Tuch</h4>
+							<h4>Get In Touch</h4>
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>Trenggilis No 1 Ubaya</li>
+									<li>JL. Tenggilis No 1 Ubaya</li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->

@@ -49,8 +49,8 @@
                                     <td>{{ $data->alamat }}</td>
                                     <td>
                                         <a href="" class="btn btn-warning" data-toggle="modal"
-                                            data-target="#exampleModal">Ubah Pembeli</a>
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                            data-target="#exampleModal{{ $data->id }}">Ubah Pembeli</a>
+                                        <div class="modal fade" id="exampleModal{{ $data->id }}" tabindex="-1" role="dialog"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">

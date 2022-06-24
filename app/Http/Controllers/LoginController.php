@@ -16,7 +16,14 @@ class LoginController extends Controller
         
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect('/');
+            if(Auth::user()->sebagai == 'pegawai')
+            {
+                return redirect('/dashboard');   
+            }
+               else
+            {
+                return redirect('/');   
+            }
         }
 
         return back()->with('loginError','Login Failed!');

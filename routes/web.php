@@ -17,17 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@home');
 Route::post('/home/search', 'HomeController@search');
 
-// Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/login/account', 'LoginController@Login');
-Route::get('/logout/account', 'LoginController@logout');
-
-// Route::get('/testlogin', function () {
-//     return view('auth.login');
-// });
-
-// Route::group(['middleware' => 'is_admin'], function () {
-// });
 Route::get('cart', 'HomeController@cart');
 Route::get('add-to-cart/{id}', 'HomeController@addToCart');
 
@@ -36,7 +25,10 @@ Route::post('/checkout', 'NotaController@checkout');
 Route::get('/history', "HomeController@history");
 Route::get('/history/{id}', "HomeController@historyDetail");
 
+Route::get('/login/account', 'LoginController@Login');
+Route::get('/logout/account', 'LoginController@logout');
 Auth::routes();
+
 Route::group(['middleware' => 'admin'], function () {
    //Report
    Route::get('/report/obat', 'ObatController@showObat');
@@ -63,3 +55,11 @@ Route::group(['middleware' => 'admin'], function () {
       return view('admin.info');
    });
 });
+
+//Routing yang tidak terpakai
+
+// Route::get('/testlogin', function () {
+//     return view('auth.login');
+// });
+// Route::group(['middleware' => 'is_admin'], function () {
+// });
