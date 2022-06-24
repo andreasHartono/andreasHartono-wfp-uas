@@ -20,7 +20,9 @@
                         <a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
                      </div>
                      <div class="product-action-2">
-                        <a title="Add to cart" href="{{ url('add-to-cart/'.$item->id) }}">Add to cart</a>
+                        @if(Auth::Check())
+                           <a title="Add to cart" href="{{ url('add-to-cart/'.$item->id) }}">Add to cart</a>
+                        @endif
                      </div>
                   </div>
                </div>

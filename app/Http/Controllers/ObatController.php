@@ -95,7 +95,7 @@ class ObatController extends Controller
       //$dataObat = NotaDetail::select(DB::raw("obats.nama as nama, SUM(kuantitas) AS total"))->join("obats","nota_details.obat_id","=","obats.id")->groupBy("obat_id")->orderBy("total","DESC")->take(5)->get();
       $dataPembeli = Nota::select(DB::raw("users.id as id, users.nama as nama, notas.created_at as created_at, SUM(notas.total_harga) as jumlah"))->join('users', 'notas.user_id', '=', 'users.id')->groupBy("user_id")->orderBy("jumlah", "DESC")->take(3)->get();
       return view('admin.report.reportcustomer', compact('dataPembeli'));
-      //dd($dataPembeli);
+      dd($dataPembeli);
    }
 
    public function showObat(){

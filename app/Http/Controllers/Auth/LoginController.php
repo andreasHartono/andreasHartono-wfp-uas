@@ -26,7 +26,17 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function authenticated(Request $request, $user)
+    {
+        if(Auth::users()->sebagai == 'pegawai')
+        {
+            return redirect()->route('admin.info');   
+        }
+           else
+        {
+            return redirect()->route('/');   
+        }
+    }
 
     /**
      * Create a new controller instance.
