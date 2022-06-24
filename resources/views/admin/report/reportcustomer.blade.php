@@ -45,7 +45,7 @@
                               <td>{{ $data->nama }}</td>
                               <td>{{ $data->created_at }}</td>
                               <td>{{ $data->jumlah }}</td>
-                              <td><a href="#" class="btn btn-outline-default">Lihat Rincian Pembelian</a></td>
+                              <td><a href="{{ url('/repordetail/'.$data->id) }}" class="btn btn-outline-default">Lihat Rincian Pembelian</a></td>
                            </tr>
                         @endforeach
                      </tbody>
