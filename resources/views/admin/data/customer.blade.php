@@ -62,33 +62,28 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <form method="POST" action="{{ url('/obat/add') }}"
+                                                    <form method="POST" action="{{ url('/pembeli/edit') }}"
                                                         enctype="multipart/form-data">
                                                         @csrf
                                                         <div class="modal-body">
+                                                            <input type="hidden" value="{{ $data->id }}" name="id">
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Nama</label>
                                                                 <input type="text" value="{{ $data->nama }}"
                                                                     class="form-control" id="nama"
-                                                                    placeholder="Masukan Nama Obat" name="nama">
+                                                                    placeholder="Masukan Nama" name="nama">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Email</label><br>
                                                                 <input type="text" value="{{ $data->email }}"
                                                                     class="form-control" id="email"
-                                                                    placeholder="Masukan Nama Obat" name="nama">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Username</label><br>
-                                                                <input type="text" value="{{ $data->username }}"
-                                                                    class="form-control" id="email"
-                                                                    placeholder="Masukan Nama Obat" name="nama">
+                                                                    placeholder="Masukan Email" name="email">
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Alamat</label><br>
                                                                 <input name="price" type="text"
                                                                     value="{{ $data->alamat }}"
-                                                                    placeholder="Masukan Harga Obat" class="form-control">
+                                                                    placeholder="Masukan Alamat" name="alamat" class="form-control">
                                                             </div>
                                                             
                                                                {{-- <div class="form-group">
