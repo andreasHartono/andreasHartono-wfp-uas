@@ -81,7 +81,7 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="exampleInputEmail1">Alamat</label><br>
-                                                                <input name="price" type="text"
+                                                                <input type="text"
                                                                     value="{{ $data->alamat }}"
                                                                     placeholder="Masukan Alamat" name="alamat" class="form-control">
                                                             </div>
